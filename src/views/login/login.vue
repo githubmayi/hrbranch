@@ -54,6 +54,14 @@ export default {
       );
     }
   },
+  created () {
+    document.onkeydown = e =>{
+      var key = window.event.keyCode;
+      if (key == 13){
+        this.login();
+      }
+    }
+  },
   methods: {
     login() {
       if (!this.username || !this.password) {
