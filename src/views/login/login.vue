@@ -1,34 +1,32 @@
 <template>
-  <div id="box">
-    <div id="login_main">
-      <el-row type="flex" justify="center" id="login_content">
-        <el-col :xs="20" :sm="10" :md="8" :xl="8" :lg="8" id="el_col">
-          <el-form :label-position="labelposition" label-width="70px">
-            <div id="login_title">
-              <span id="login_span">人力资源管理系统</span>
-              <div id="login_img">
-                <img src="../../../src/images/pen.png" alt />
-              </div>
+  <div id="login_main">
+    <el-row  id="login_content">
+      <el-col :xs="20" :sm="10" :md="8" :xl="8" :lg="8" id="el_col">
+        <el-form :label-position="labelposition" label-width="70px">
+          <div id="login_title">
+            <span id="login_span">人力资源管理系统</span>
+            <div id="login_img">
+              <img src="../../../src/images/pen.png" alt />
             </div>
+          </div>
 
-            <el-form-item label="账号">
-              <el-input v-model="username" placeholder="请输入账号"></el-input>
-            </el-form-item>
-            <el-form-item label="密码">
-              <el-input type="password" v-model="password" placeholder="请输入密码"></el-input>
-            </el-form-item>
-            <div id="login_bottom">
-              <div id="login_rember">
-                <el-switch v-model="rember" active-color="#13ce66" active-text="记住密码"></el-switch>
-              </div>
-              <div id="login_button">
-                <el-button type="success" @click="login">登录</el-button>
-              </div>
+          <el-form-item label="账号">
+            <el-input v-model="username" placeholder="请输入账号"></el-input>
+          </el-form-item>
+          <el-form-item label="密码">
+            <el-input type="password" v-model="password" placeholder="请输入密码"></el-input>
+          </el-form-item>
+          <div id="login_bottom">
+            <div id="login_rember">
+              <el-switch v-model="rember" active-color="#13ce66" active-text="记住密码"></el-switch>
             </div>
-          </el-form>
-        </el-col>
-      </el-row>
-    </div>
+            <div id="login_button">
+              <el-button type="success" @click="login">登录</el-button>
+            </div>
+          </div>
+        </el-form>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -54,13 +52,13 @@ export default {
       );
     }
   },
-  created () {
-    document.onkeydown = e =>{
+  created() {
+    document.onkeydown = e => {
       var key = window.event.keyCode;
-      if (key == 13){
+      if (key == 13) {
         this.login();
       }
-    }
+    };
   },
   methods: {
     login() {
@@ -106,13 +104,19 @@ export default {
   margin: 0;
   overflow: hidden;
 }
-#box {
+html{
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+#login_main {
   width: 100%;
-  height: -webkit-fill-available;
+  height: 100%;
   background: url("../../../src/images/login.jpg") no-repeat;
 }
 #login_content {
-  padding-top: 18%;
+  height: 100%;
 }
 
 #el_col {
@@ -120,6 +124,10 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
   border-radius: 6px;
   padding: 28px 10px 10px 10px;
+  top: 50%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
 #login_title {
@@ -141,14 +149,5 @@ export default {
 }
 #login_button {
   text-align: end;
-}
-
-@media screen and (min-width: 1600px) {
-  #box {
-    background-size: 100% auto;
-  }
-  #login_content {
-    padding-top: 6%;
-  }
 }
 </style>
