@@ -1,11 +1,11 @@
 <template>
-  <div id="login_main">
-    <el-row  id="login_content">
-      <el-col :xs="20" :sm="10" :md="8" :xl="8" :lg="8" id="el_col">
+  <div class="login_main">
+    <el-row  class="login_content">
+      <el-col :xs="18" :sm="10" :md="8" :xl="8" :lg="6" class="el_col">
         <el-form :label-position="labelposition" label-width="70px">
-          <div id="login_title">
-            <span id="login_span">人力资源管理系统</span>
-            <div id="login_img">
+          <div class="login_title">
+            <span class="login_span">人力资源管理系统</span>
+            <div class="login_img">
               <img src="../../../src/images/pen.png" alt />
             </div>
           </div>
@@ -16,12 +16,12 @@
           <el-form-item label="密码">
             <el-input type="password" v-model="password" placeholder="请输入密码"></el-input>
           </el-form-item>
-          <div id="login_bottom">
-            <div id="login_rember">
+          <div class="login_bottom">
+            <div class="login_rember">
               <el-switch v-model="rember" active-color="#13ce66" active-text="记住密码"></el-switch>
             </div>
-            <div id="login_button">
-              <el-button type="success" @click="login">登录</el-button>
+            <div class="login_button">
+              <el-button type="primary" @click="login">登录</el-button>
             </div>
           </div>
         </el-form>
@@ -38,8 +38,8 @@ export default {
     const _self = this;
     return {
       labelposition: "left",
-      username: "",
-      password: "",
+      username: "admin",
+      password: "123456",
       rember: true
     };
   },
@@ -65,7 +65,8 @@ export default {
       if (!this.username || !this.password) {
         this.$message({
           message: "请输入用户名和密码！",
-          type: "warning"
+          type: "warning",
+          showClose: true
         });
       } else {
         debugger;
@@ -85,6 +86,7 @@ export default {
                 message: "登录成功！",
                 type: "success"
               });
+              this.$router.push({path: '/index'});
             } else {
               this.$message({
                 message: "账号或密码错误！",
@@ -98,57 +100,4 @@ export default {
 };
 </script>
 
-<style>
-* {
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-}
-html{
-  height: 100%;
-}
-body {
-  height: 100%;
-}
-#login_main {
-  width: 100%;
-  height: 100%;
-  background: url("../../../src/images/login.jpg") no-repeat;
-  background-size: cover;
-}
-#login_content {
-  height: 100%;
-}
-
-#el_col {
-  background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
-  border-radius: 6px;
-  padding: 28px 10px 10px 10px;
-  top: 50%;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-
-#login_title {
-  margin-bottom: 28px;
-}
-#login_span {
-  float: left;
-  font-size: 28px;
-}
-#login_img {
-  text-align: right;
-}
-#login_bottom {
-  margin-bottom: 12px;
-}
-#login_rember {
-  margin-top: 6px;
-  float: left;
-}
-#login_button {
-  text-align: end;
-}
-</style>
+<style src="../../css/login.css">

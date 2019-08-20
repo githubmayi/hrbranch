@@ -16,7 +16,6 @@ export default {
 
 // 登录返回的数据
 Mock.mock('login',(options) => {
-    debugger
     let logindata = JSON.parse(options.body);
     return loginlist.filter((e) => e.username == logindata.username && e.password == logindata.password)
 })
