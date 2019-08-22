@@ -1,32 +1,39 @@
 <template>
   <el-container class="el_box">
-    <el-header class="el_header"> 
-      <el-radio-group v-model="isCollapse" class="el_menu_togger">
-          <el-radio-button :label="false">展开</el-radio-button>
-          <el-radio-button :label="true">收起</el-radio-button>
-        </el-radio-group>
+    <el-header class="el_header">
+      <el-col :xs="4" :sm="3" :md="3" :lg="3" :xl="3">
+        <span class="main_title">HR</span>
+      </el-col>
+      <el-col :xs="4" :sm="3" :md="3" :lg="3" :xl="3">
+        <el-tooltip :content="isCollapse ? '展开菜单' : '收缩菜单'">
+          <i
+            :class="[isCollapse? 'el-icon-s-unfold': 'el-icon-s-fold','trgger_bottom']"
+            @click="TrggerMenu"
+          ></i>
+        </el-tooltip>
+      </el-col>
     </el-header>
     <el-container>
-      <el-aside width="200px" class="el_menu">
-        <el-menu
-          default-active="1-4-1"
-          class="el-menu-vertical-demo"
-          :collapse="isCollapse"
-        >
+      <el-aside :width="isCollapse ? '':'200px'" class="el_menu">
+        <el-menu router default-active="/index/system" class="el-menu-vertical-demo" :collapse="isCollapse">
+          <el-menu-item index="/index/system">
+            <img src="../../images/sys.png" />
+            <span slot="title" class="index_span">系统界面</span>
+          </el-menu-item>
           <el-submenu index="1">
             <template slot="title">
-              <img src="../../images/orginization.png">
+              <img src="../../images/orginization.png" />
               <span slot="title" class="index_span">组织架构</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">组织管理</el-menu-item>
-              <el-menu-item index="1-2">职位管理</el-menu-item>
-              <el-menu-item index="1-3">职级管理</el-menu-item>
+              <el-menu-item index="/index/department">组织管理</el-menu-item>
+              <el-menu-item index="/index/position">职位管理</el-menu-item>
+              <el-menu-item index="/index/postlevel">职级管理</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
-              <img src="../../images/hrmanager.png">
+              <img src="../../images/hrmanager.png" />
               <span slot="title" class="index_span">人事管理</span>
             </template>
             <el-menu-item-group>
@@ -38,7 +45,7 @@
           </el-submenu>
           <el-submenu index="3">
             <template slot="title">
-              <img src="../../images/attendance.png">
+              <img src="../../images/attendance.png" />
               <span slot="title" class="index_span">考勤管理</span>
             </template>
             <el-menu-item-group>
@@ -51,12 +58,16 @@
           </el-submenu>
         </el-menu>
       </el-aside>
-      <el-main class="el_main">Main</el-main>
+      <el-main class="el_main">
+        <div class="el_main_contant">
+          <router-view/>
+        </div>
+      </el-main>
     </el-container>
   </el-container>
 </template>
 
-<style scoped>
+<style>
 html,
 body {
   height: 100%;
@@ -66,30 +77,54 @@ body {
   margin: 0;
   overflow: hidden;
 }
-.el_menu{
+.el_menu {
   border: none;
 }
+.el_main {
+  background: #eef5f9;
+  padding: 5px;
+}
+.el_main_contant {
+  background: #fff;
+  height: 100%;
+}
 .el_header {
-  background:#409eff;
+  background: #409eff;
 }
 .el_box {
   width: 100%;
   height: 100%;
 }
-.el_menu_togger{
+.el_menu_togger {
   line-height: 60px;
 }
-.index_span{
+.index_span {
   padding-left: 10px;
+}
+.trgger_bottom {
+  font-size: 36px;
+  color: #fff;
+  line-height: 60px;
+  cursor: pointer;
+}
+.main_title {
+  font-size: 36px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 60px;
 }
 </style>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      isCollapse: true
-    }
+      isCollapse: false
+    };
   },
-}
-  
+  methods: {
+    TrggerMenu() {
+      this.isCollapse = !this.isCollapse;
+    }
+  }
+};
 </script>
