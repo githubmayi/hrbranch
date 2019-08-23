@@ -1,10 +1,10 @@
 <template>
   <el-container class="el_box">
     <el-header class="el_header">
-      <el-col :xs="4" :sm="3" :md="3" :lg="3" :xl="3">
+      <el-col :xs="4" :sm="2" :md="2" :lg="2" :xl="2">
         <span class="main_title">HR</span>
       </el-col>
-      <el-col :xs="4" :sm="3" :md="3" :lg="3" :xl="3">
+      <el-col :xs="4" :sm="4" :md="2" :lg="2" :xl="2">
         <el-tooltip :content="isCollapse ? '展开菜单' : '收缩菜单'">
           <i
             :class="[isCollapse? 'el-icon-s-unfold': 'el-icon-s-fold','trgger_bottom']"
@@ -12,10 +12,17 @@
           ></i>
         </el-tooltip>
       </el-col>
+      <el-col :xs="1" :sm="12" :md="17" :lg="17" :xl="17" class="header_content"></el-col>
+      <el-col :xs="15" :sm="6" :md="3" :lg="3" :xl="3" class="header_content">待开发。。。</el-col>
     </el-header>
     <el-container>
-      <el-aside :width="isCollapse ? '':'200px'" class="el_menu">
-        <el-menu router default-active="/index/system" class="el-menu-vertical-demo" :collapse="isCollapse">
+      <el-aside :width="isCollapse ? '':'210px'" class="el_menu">
+        <el-menu
+          router
+          default-active="/index/system"
+          class="el-menu-vertical-demo"
+          :collapse="isCollapse"
+        >
           <el-menu-item index="/index/system">
             <img src="../../images/sys.png" />
             <span slot="title" class="index_span">系统界面</span>
@@ -60,7 +67,7 @@
       </el-aside>
       <el-main class="el_main">
         <div class="el_main_contant">
-          <router-view/>
+          <router-view />
         </div>
       </el-main>
     </el-container>
@@ -77,26 +84,24 @@ body {
   margin: 0;
   overflow: hidden;
 }
-.el_menu {
-  border: none;
-}
-.el_main {
-  background: #eef5f9;
-  padding: 5px;
-}
-.el_main_contant {
-  background: #fff;
+.el_box {
+  width: 100%;
   height: 100%;
 }
 .el_header {
   background: #409eff;
 }
-.el_box {
-  width: 100%;
-  height: 100%;
-}
 .el_menu_togger {
   line-height: 60px;
+}
+.header_content {
+  height: 60px;
+  line-height: 60px;
+  color:#fff;
+
+}
+.el_menu ul {
+  border: none;
 }
 .index_span {
   padding-left: 10px;
@@ -106,6 +111,14 @@ body {
   color: #fff;
   line-height: 60px;
   cursor: pointer;
+}
+.el_main {
+  background: #eef5f9;
+  padding: 6px;
+}
+.el_main_contant {
+  background: #fff;
+  height: 100%;
 }
 .main_title {
   font-size: 36px;
