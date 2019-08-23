@@ -13,7 +13,18 @@
         </el-tooltip>
       </el-col>
       <el-col :xs="1" :sm="12" :md="17" :lg="17" :xl="17" class="header_content"></el-col>
-      <el-col :xs="15" :sm="6" :md="3" :lg="3" :xl="3" class="header_content">待开发。。。</el-col>
+      <el-col :xs="15" :sm="6" :md="3" :lg="3" :xl="3" class="header_content">
+        <el-dropdown trigger="click" class="header_box">
+                            <span class="el-dropdown-link">
+                                <img src="../../images/head.jpg" class="header_img">
+                            </span>
+                            <el-dropdown-menu slot="dropdown">
+                              <el-dropdown-item icon="el-icon-tickets">个人中心</el-dropdown-item>
+                              <el-dropdown-item icon="el-icon-news">修改密码</el-dropdown-item>
+                              <el-dropdown-item icon="el-icon-back">退出</el-dropdown-item>
+                            </el-dropdown-menu>
+                          </el-dropdown>
+      </el-col>
     </el-header>
     <el-container>
       <el-aside :width="isCollapse ? '':'210px'" class="el_menu">
@@ -125,6 +136,23 @@ body {
   color: #fff;
   font-weight: bold;
   line-height: 60px;
+}
+.header_img{
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    border: 1px solid;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0px 0px 45px #f3f3f3;
+}
+.header_box{
+  width: 60px;
+  height: 60px;
+  float: right;
 }
 </style>
 <script>
