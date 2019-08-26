@@ -10,6 +10,7 @@
 
          Vue.prototype.$plugins = {
              SetLocalStorage: (item,val) => {
+                 debugger
                  window.localStorage[item] = val;
              },
              setSessionStorage: (item,val) => {
@@ -22,7 +23,29 @@
                  }else{
                      val = sessionStorage.getItem(item);
                  }
-                 return val;
+                 return JSON.parse(val);
+             },
+             LoadEchartBars: (obj, document, options) => {
+                 let barecharts = obj.$echarts.init(document);
+                 barecharts.setOption({
+                     legend: {},
+                     tooltip: {},
+                     dataset: {
+                        dimensions: options.dataset,
+                        source: options.source
+                     },
+                     xAxis: {type: 'category'},
+                     yAxis: {},
+                     series: [
+                         {type: 'bar'},
+                         {type: 'bar'},
+                         {type: 'bar'},
+                         {type: 'bar'}
+                     ]
+                 })
+                 window.addEventListener("resize", function() {
+                     barecharts.resize();
+                 })
              }
          }
      }

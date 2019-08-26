@@ -130,6 +130,7 @@ body {
 .el_main_contant {
   background: #fff;
   height: 100%;
+  min-width: 1139px;
 }
 .main_title {
   font-size: 36px;

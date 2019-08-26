@@ -1,6 +1,6 @@
 <template>
   <div class="login_main">
-    <el-row  class="login_content">
+    <el-row class="login_content">
       <el-col :xs="18" :sm="10" :md="8" :xl="8" :lg="6" class="el_col">
         <el-form :label-position="labelposition" label-width="70px">
           <div class="login_title">
@@ -35,12 +35,11 @@
 import Mock from "../../mock.js";
 export default {
   data() {
-    const _self = this;
     return {
       labelposition: "left",
       username: "admin",
       password: "123456",
-      rember: true
+      rember: true,
     };
   },
   // mockjs创建登录数据存放在localstorage
@@ -69,7 +68,6 @@ export default {
           showClose: true
         });
       } else {
-        debugger;
         this.$axios
           .post(this.$const.login, {
             username: this.username,
@@ -86,7 +84,10 @@ export default {
                 message: "登录成功！",
                 type: "success"
               });
-              this.$router.push({path: '/index'});
+              //存放当前登录用户名称
+              debugger
+              this.$plugins.SetLocalStorage("currentUserName", JSON.stringify(this.username));
+              this.$router.push({ path: "/index" });
             } else {
               this.$message({
                 message: "账号或密码错误！",
@@ -95,7 +96,7 @@ export default {
             }
           });
       }
-    }
+    },
   }
 };
 </script>
