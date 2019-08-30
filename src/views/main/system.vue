@@ -54,7 +54,7 @@ export default {
       day:
         new Date().getDate() > 9
           ? new Date().getDate()
-          : "0" + (new Date().getDate() + 1),
+          : "0" + (new Date().getDate()),
       hour: new Date().getHours(),
       minute:
         new Date().getMinutes() > 9
